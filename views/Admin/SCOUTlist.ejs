@@ -1,2 +1,64 @@
 <%- include('menu.ejs') %>
-Scout
+<div class="container-fluid">
+        <main class="tm-main">
+            <!-- Search form -->
+            <div class="row tm-row">
+                
+                </div> 
+                 <div class="tm-site-header ">          
+                <h1  style ="color: skyblue;"class="text-center">SCOUT List</h1>
+            </div> 
+            <div class="row tm-row"> 
+                <div id ="Scoutlist">
+                    <table border="1">
+                        <tr>
+                           
+                           
+                            <th>user Id</th>
+                            <th>Name</th>
+                             <th>Address</th>
+                            <th>Email</th>
+                             <th>Number</th>
+                            <th>Gender</th>
+                            <th>DoB</th>
+                            <th>Action</th>
+                        </tr>
+                        <% for(var i=0; i< userlist.length; i++ ){ %>
+                        <tr>
+                        
+                                
+                                <td><%= userlist[i].userid %></td>
+                                <td><%= userlist[i].name %></td>
+                                <td><%= userlist[i].address %></td>
+                                <td><%= userlist[i].email %></td>
+                                <td><%= userlist[i].number %></td>
+                                <td><%= userlist[i].gender %></td>
+                                <td><%= userlist[i].dob %></td>
+                               
+                                <td> 
+                                    <a href="/Admin/deleteAccCont/<%=userlist[i].userid%>">Delete</a>  
+                                </td>
+                            
+                            <% } %>
+                        </tr>
+                    </table>
+                </div>               
+            </div>     
+           
+                
+            </div>       
+            <div class="row tm-row">
+             
+                             
+            </div>            
+            <footer class="row tm-row">
+                <hr class="col-12">
+                
+                
+            </footer>
+        </main>
+    </div>
+    <script src="/assets/js/jquery.min.js"></script>
+ 
+</body>
+</html>
