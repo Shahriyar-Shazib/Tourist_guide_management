@@ -10,6 +10,16 @@ module.exports = {
 				callback(results,false);
 			}
 		});
+    },
+    Delete: function(user, callback){
+		var sql = "DELETE FROM `scout` WHERE userid=? ";
+		db.execute(sql, [user.userid],function(results){
+			if(results.length > 0){
+				callback(results,true);
+			}else{
+				callback(results,false);
+			}
+		});
 	},
 
 }

@@ -3,6 +3,7 @@ const SCOUTM = require.main.require('./models/SCOUTModel.js');
 const Guser = require.main.require('./models/GeneralUserModel.js');
 const pensignup = require.main.require('./models/penReqModel.js');
 const penpost = require.main.require('./models/PenPostModel.js');
+const user = require.main.require('./models/userModel.js');
 const router = express.Router();
 router.get('/', (req, res)=>{
 	res.render('Admin/Home')
@@ -35,5 +36,31 @@ router.get('/userlist', (req, res)=>{
 })
 router.get('/profile', (req, res)=>{
 	res.render('Admin/profile')
+})
+router.get('/deleteScout/:id', (req, res)=>{
+    users={
+        userid:req.params.id
+    }
+    SCOUTM.Delete(users,function (result){
+        user.Delete(users,function(status)
+        {
+            res.redirect('/Admin/SCOUTlist')
+        })
+       
+    })
+	
+})
+router.get('/deleteuser/:id', (req, res)=>{
+    users={
+        userid:req.params.id
+    }
+    Guser.Delete(users,function (result){
+        user.Delete(users,function(status)
+        {
+            res.redirect('/Admin/userlist')
+        })
+       
+    })
+	
 })
 module.exports = router;
