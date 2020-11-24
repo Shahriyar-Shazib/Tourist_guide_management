@@ -10,6 +10,13 @@ module.exports = {
 				callback(results,false);
 			}
 		});
-	},
+    },
+    insert: function(post, callback){
+		var sql = "INSERT INTO `post`(`postid`, `UserId`, `country`, `visiting_Place`, `short_history`, `travel_medium`, `cost`) VALUES (?, ?, ?,?,?,?,?)";
+		db.execute(sql, ['', post.userid,post.country, post.vplace,post.s_hostory,post.medium,post.cost], function(status){
+			callback(status);
+		});
+    },
+
 
 }
