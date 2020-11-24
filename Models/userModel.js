@@ -1,10 +1,10 @@
-const db = require('./db');
+const db = require('./db-secure');
 
 module.exports = {
 
     validate: function(user, callback){
-		var sql = "select * from user where userid='"+user.username+"' and password='"+user.password+"'";
-		db.getResults(sql, function(results){
+		var sql = "select * from user where userid=? and password=?";
+		db.getResults(sql,[user.username,user.password], function(results){
 			if(results.length > 0){
 				callback(results,true);
 			}else{

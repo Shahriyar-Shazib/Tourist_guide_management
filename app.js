@@ -1,4 +1,4 @@
-//declaration
+///declearation
 const express 		= require('express');
 const bodyParser 	= require('body-parser');
 const flash 		= require('express-flash-notification');
@@ -7,17 +7,15 @@ const exSession 	= require('express-session');
 const cookieParser 	= require('cookie-parser');
 
 
-
-
 const login			= require('./controller/login');
 const changepass	= require('./controller/Changepass.js');
-const admin			= require('./controller/admin');
-const generalusr	= require('./controller/GeneralUser');
-const scout 		= require('./controller/Scout');
+const Admin			= require('./controller/Admin');
+const Scout			= require('./controller/Scout');
+const Guser 		= require('./controller/GeneralUSer');
 const logout		= require('./controller/logout');
 
-
 const{check,validationResult } = require('express-validator');
+
 
 const app 			= express();
 
@@ -33,25 +31,29 @@ app.use(exSession({secret: 'my secret value', saveUninitialized: true, resave: f
   }
 }));
 app.use(cookieParser());
-
+app.use(flash(app));
+app.use(flush());
 
 app.use('/login', login);
 app.use('/Cangepass', changepass);
-app.use('/Admin', admin);
+app.use('/Admin', Admin);
 app.use('/logout', logout);
-app.use('/generalUser', generalusr);
-app.use('/SCOUT',scout);
+app.use('/Scout', Scout);
+app.use('/Guser', Guser);
+
 
 //app.use('/user', user);
 
 //route
 app.get('/', (req, res)=>{
 	if(req.cookies['uname'] != null && req.session.type=="Admin"){
-		res.redirect('/Admin');
-	}else if(req.cookies['uname'] != null && req.session.type=="SCOUT  "){
-		res.redirect('/SCOUT');
-	}else if(req.cookies['uname'] != null && req.session.type=="GUser"){
-		res.redirect('/generalUser');
+		res.redirect('/Adminhome');
+	}else if(req.cookies['uname'] != null && req.session.type=="Content Controll Manager"){
+		res.redirect('/contentcontroller');
+	}else if(req.cookies['uname'] != null && req.session.type=="Account Control Manager"){
+		res.redirect('/achome');
+	}else if(req.cookies['uname'] != null && req.session.type=="General User"){
+		res.redirect('/userController');
 	}
 	else{
 		res.redirect('/login');
