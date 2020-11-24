@@ -21,6 +21,7 @@ module.exports = {
 			}
 		});
     },
+    
     getbyid: function(user, callback){
         var sql = "select * from `pendingpost` WHERE postid=? ";
         //console.log(sql,user.pstid)

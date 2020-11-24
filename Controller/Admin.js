@@ -7,8 +7,15 @@ const penpost = require.main.require('./Models/PenPostModel.js');
 const user = require.main.require('./Models/userModel.js');
 const posts = require.main.require('./Models/PostModel.js');
 const router = express.Router();
+
+
+
+
 router.get('/', (req, res)=>{
-	res.render('Admin/Home')
+    posts.GetAll(function (result){
+        //console.log(result);
+        res.render('Admin/Home',{userlist:result})
+    })
 })
 
 router.get('/PendingPost', (req, res)=>{
@@ -121,7 +128,7 @@ router.get('/ApprovePostreq/:id', (req, res)=>{
     console.log ('pst.pstid')
     penpost.getbyid(pst,function(result){
         reqe={
-            userid:result[0].Userid,
+            userid:result[0].UserId,
             country:result[0].country,
             vplace:result[0].visiting_Place,
             s_hostory:result[0].short_history,
@@ -129,14 +136,15 @@ router.get('/ApprovePostreq/:id', (req, res)=>{
             cost:result[0].cost,
 
         }
+       // console.log(reqe)
         posts.insert(reqe,function (resul){
             
-            penpost.Delete(pst,function (result){
+            //penpost.Delete(pst,function (result){
        
                 res.redirect('/Admin/PendingPost')
            
            
-        })
+       // })
                   
   
        

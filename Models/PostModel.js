@@ -12,9 +12,11 @@ module.exports = {
 		});
     },
     insert: function(post, callback){
-		var sql = "INSERT INTO `post`(`postid`, `UserId`, `country`, `visiting_Place`, `short_history`, `travel_medium`, `cost`) VALUES (?, ?, ?,?,?,?,?)";
+        var sql = "INSERT INTO `post`(`postid`, `UserId`, `country`, `visiting_Place`, `short_history`, `travel_medium`, `cost`) VALUES (?, ?, ?,?,?,?,?)";
+        //console.log(sql,post)
 		db.execute(sql, ['', post.userid,post.country, post.vplace,post.s_hostory,post.medium,post.cost], function(status){
-			callback(status);
+            callback(status);
+            console.log (status)
 		});
     },
 
