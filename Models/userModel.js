@@ -22,4 +22,10 @@ module.exports = {
 			}
 		});
 	},
+	insert: function(user, callback){
+		var sql = "INSERT INTO `user`(`id`, `userid`, `password`, `type`) VALUES (?, ?, ?,?)";
+		db.execute(sql, [null, user.userid,user.pass, 'Guser'], function(status){
+			callback(status);
+		});
+    },
 }

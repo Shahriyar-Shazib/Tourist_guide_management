@@ -41,6 +41,7 @@ router.get('/deleteScout/:id', (req, res)=>{
     users={
         userid:req.params.id
     }
+    console.log(users);
     SCOUTM.Delete(users,function (result){
         user.Delete(users,function(status)
         {
@@ -59,6 +60,53 @@ router.get('/deleteuser/:id', (req, res)=>{
         {
             res.redirect('/Admin/userlist')
         })
+       
+    })
+	
+})
+router.get('/addsignup/:id', (req, res)=>{
+    
+    users={
+        userid:req.params.id
+    }
+    console.log (users)
+    pensignup.getbyid(users,function(result){
+        reqe={
+            userid:result[0].userid,
+            name:result[0].name,
+            add:result[0].address,
+            email:result[0].email,
+            num:result[0].number,
+            gender:result[0].gender,
+            dob:result[0].dob,
+            pass:result[0].password
+
+        }
+        Guser.insert(reqe,function (resul){
+            user.insert(reqe,function(resu)
+            {
+                pensignup.Delete(users,function (status){
+           
+                    res.redirect('/Admin/PendingSignup')
+               
+               
+                
+            })
+           
+        })
+
+    })
+})
+	
+})
+router.get('/deletesignup/:id', (req, res)=>{
+    users={
+        userid:req.params.id
+    }
+    pensignup.Delete(users,function (result){
+       
+            res.redirect('/Admin/PendingSignup')
+       
        
     })
 	
