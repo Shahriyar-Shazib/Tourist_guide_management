@@ -1,6 +1,7 @@
 const express = require('express');
 const posts = require.main.require('./Models/PostModel.js');
 const comments = require.main.require('./Models/commentModel.js');
+const SCOUT = require.main.require('./Models/SCOUTModel.js');
 //const userModel = require.main.require('./models/userModel.js');
 const router = express.Router();
 
@@ -16,7 +17,7 @@ router.get('/Comment/:id', (req, res)=>{
     }
     posts.GetPostbyId(pst,function (result){
         comments.Getcmntbypostid(pst,function (results){
-            res.render('GUser/comment.ejs',{userlist:result,cmnt:results})
+            res.render('Scout/comment.ejs',{userlist:result,cmnt:results})
         }) 
         
     })
@@ -31,12 +32,18 @@ router.post('/Comment/:id', (req, res)=>{
     comments.insert(pst,function (result){
         posts.GetPostbyId(pst,function (result){
             comments.Getcmntbypostid(pst,function (results){
-                res.render('GUser/comment.ejs',{userlist:result,cmnt:results})
+                res.render('SCOUT/comment.ejs',{userlist:result,cmnt:results})
             }) 
             
         })
         
     })
 })
-
+router.get('/profile', (req, res)=>{
+    SCOUT.getbyID(req.cookies['uname'],function (result){
+        //console.log (result)
+        res.render('SCOUT/profile',{userlist:result})
+    })
+	
+})
 module.exports = router;
