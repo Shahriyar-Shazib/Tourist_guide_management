@@ -11,7 +11,7 @@ const login			= require('./controller/login');
 const changepass	= require('./controller/Changepass.js');
 const Admin			= require('./controller/Admin');
 const Scout			= require('./controller/Scout');
-const Guser 		= require('./controller/GeneralUSer');
+const Guser 		= require('./controller/GeneralUser');
 const logout		= require('./controller/logout');
 
 const{check,validationResult } = require('express-validator');
@@ -41,19 +41,18 @@ app.use('/logout', logout);
 app.use('/Scout', Scout);
 app.use('/Guser', Guser);
 
-
+//console.log(app.use)
 //app.use('/user', user);
 
 //route
 app.get('/', (req, res)=>{
 	if(req.cookies['uname'] != null && req.session.type=="Admin"){
-		res.redirect('/Adminhome');
-	}else if(req.cookies['uname'] != null && req.session.type=="Content Controll Manager"){
-		res.redirect('/contentcontroller');
-	}else if(req.cookies['uname'] != null && req.session.type=="Account Control Manager"){
-		res.redirect('/achome');
-	}else if(req.cookies['uname'] != null && req.session.type=="General User"){
-		res.redirect('/userController');
+		res.redirect('/Admin');
+	}
+	else if(req.cookies['uname'] != null && req.session.type=="SCOUT"){
+		res.redirect('/Scout');
+	}else if(req.cookies['uname'] != null && req.session.type=="Guserr"){
+		res.redirect('/Guser');
 	}
 	else{
 		res.redirect('/login');
