@@ -35,7 +35,7 @@ app.use(flash(app));
 app.use(flush());
 
 app.use('/login', login);
-app.use('/Cangepass', changepass);
+app.use('/Changepass', changepass);
 app.use('/Admin', Admin);
 app.use('/logout', logout);
 app.use('/Scout', Scout);

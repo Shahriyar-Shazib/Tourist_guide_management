@@ -27,5 +27,22 @@ module.exports = {
 		db.execute(sql, ['', user.userid,user.pass, 'Guser'], function(status){
 			callback(status);
 		});
-    },
+	},
+	getuserbyid: function(user, callback){
+		var sql = "SELECT * FROM `user` WHERE userid=?";
+		//console.log (user,sql)
+		db.getResults(sql, [user.username], function(status){
+			callback(status);
+		});
+	},
+	
+
+	updatepass: function(user, callback){
+		var sql = "UPDATE `user` SET `password`=? WHERE userid=?";
+		console.log (user,sql)
+		db.execute(sql, [user.pass,user.username], function(status){
+			callback(status);
+		});
+	},
+
 }

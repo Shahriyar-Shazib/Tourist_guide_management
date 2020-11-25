@@ -6,7 +6,9 @@ router.get('/', (req, res)=>{
 user={
     username:req.cookies['uname']
 }
+//console.log(user)
 userModel.getuserbyid(user, function(result){
+    //console.log(result)
     if (result.length>0){
         res.render('ChangePass/index.ejs',{user:result})
     }
@@ -26,7 +28,11 @@ userModel.updatepass(user, function(result){
         res.redirect('/login');
     }
     else{
-        req.render('Adminhome/HomeAdmin');
+        console.log ("else")
+        req.session.uname = null;
+        res.clearCookie('uname');
+        res.clearCookie('usertype');
+        res.redirect('/login');
     }
 })
 

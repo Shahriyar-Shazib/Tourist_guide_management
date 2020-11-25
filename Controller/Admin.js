@@ -2,6 +2,7 @@ const express = require('express');
 const { post } = require('./login');
 const SCOUTM = require.main.require('./Models/SCOUTModel.js');
 const Guser = require.main.require('./Models/GeneralUserModel.js');
+const Admin = require.main.require('./Models/AdminModel.js');
 const pensignup = require.main.require('./Models/penReqModel.js');
 const penpost = require.main.require('./Models/PenPostModel.js');
 const user = require.main.require('./Models/userModel.js');
@@ -44,7 +45,11 @@ router.get('/userlist', (req, res)=>{
 	
 })
 router.get('/profile', (req, res)=>{
-	res.render('Admin/profile')
+    Admin.getbyID(req.cookies['uname'],function (result){
+        //console.log (result)
+        res.render('Admin/profile',{userlist:result})
+    })
+	
 })
 router.get('/deleteScout/:id', (req, res)=>{
     users={
