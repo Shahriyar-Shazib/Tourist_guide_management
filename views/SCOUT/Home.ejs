@@ -40,6 +40,9 @@
                 
                     
                    <% for(var i=0; i< userlist.length; i++ ){ %>
+                   <fieldset>
+                       
+                   
                     <article class="col-12 col-md-6 tm-post">
                         <hr class="tm-hr-primary">
                         <a href="post.html" class="effect-lily tm-post-link tm-pt-60">
@@ -56,10 +59,12 @@
                             <%= userlist[i].short_history%>
                             <hr>
                             <%= userlist[i].visiting_Place%><br>
+                            <hr>
                             travel medium:
                             <%= userlist[i]. travel_medium%><br>
+                            <hr>
                             <span>
-                            travel medium:
+                            Cost:
                             <%= userlist[i].cost%>
                             </span>
                         </p>
@@ -70,11 +75,14 @@
                         <div class="d-flex justify-content-between">
                         
                             
-                            <span> <a href="/Guser/Comment/<%=userlist[i].postid%>">Comment</a> </span>
-                            <span> <a href="/Guser/addwhite/<%=userlist[i].postid%>">Add White List</a> </span>
+                            <span> <a href="/Scout/Comment/<%=userlist[i].postid%>">Comment</a> </span>
+                            
                            
                         </div>
                     </article>
+                    
+                        
+                    </fieldset>
                     <%}%>
 
             </div>
