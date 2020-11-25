@@ -2,6 +2,7 @@ const express = require('express');
 const posts = require.main.require('./Models/PostModel.js');
 const Whitelist = require.main.require('./Models/WhiteListModel.js');
 const comments = require.main.require('./Models/commentModel.js');
+const Guser = require.main.require('./Models/GeneralUserModel.js');
 const router = express.Router();
 
 router.get('/', (req, res)=>{
@@ -43,11 +44,31 @@ router.get('/addwhite/:id', (req, res)=>{
         pstid:req.params.id,
         userid:req.cookies['uname']
     }
-    Whitelist.insert(pst,function (result){
+    Whitelist.insert(wl,function (result){
        
-            res.render('GUser/comment.ejs',{userlist:result,cmnt:results})
-       
+           res.redirect('/Guser')  
         
     })
+})
+router.get('/WhiteList', (req, res)=>{
+    wl={
+        userid:req.cookies['uname']
+    }
+    Whitelist.getbyid(wl,function (result){
+       /* post.GetPostbyIdArray(result,function (results){
+
+        })*/
+       
+           //res.redirect('/Guser')  
+        
+    })
+})
+
+router.get('/profile', (req, res)=>{
+    Guser.getbyID(req.cookies['uname'],function (result){
+        //console.log (result)
+        res.render('GUser/profile',{userlist:result})
+    })
+	
 })
 module.exports = router;

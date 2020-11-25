@@ -28,6 +28,16 @@ module.exports = {
 				callback(results,false);
 			}
 		});
-    },
+	},
+	/*GetPostbyIdArray: function(pst, callback){
+		var sql = "select * from post where postid in ('"+for(var i){}+"' ";
+		db.getResults(sql, pst.pstid,function(results){
+			if(results.length > 0){
+				callback(results,true);
+			}else{
+				callback(results,false);
+			}
+		});*/
+  //  },
 
 }
