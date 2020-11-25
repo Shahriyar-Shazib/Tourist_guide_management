@@ -19,6 +19,15 @@ module.exports = {
             console.log (status)
 		});
     },
-
+    GetPostbyId: function(pst, callback){
+		var sql = "select * from post where postid=? ";
+		db.getResults(sql, pst.pstid,function(results){
+			if(results.length > 0){
+				callback(results,true);
+			}else{
+				callback(results,false);
+			}
+		});
+    },
 
 }

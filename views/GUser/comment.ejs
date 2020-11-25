@@ -4,10 +4,7 @@
             <!-- Search form -->
             <div class="row tm-row">
                 <div class="col-12">
-                    <form method="GET" class="form-inline tm-mb-80 tm-search-form">                
-                        <input class="form-control tm-search-input" id ="srcpost" name="query" type="text" placeholder="Search..." aria-label="Search">
-                                                      
-                    </form>
+                    
                 </div>                
             </div>            
                 <!--<article class="col-12 col-md-6 tm-post">
@@ -39,7 +36,7 @@
                 <div class="row tm-row">
                 
                     
-                    <article class="col-12 col-md-6 tm-post">
+                    <article class="col-12  ">
                         <hr class="tm-hr-primary">
                         <a href="post.html" class="effect-lily tm-post-link tm-pt-60">
                             <div class="tm-post-link-inner">
@@ -74,10 +71,28 @@
 
             </div>
             
-            <div class="row tm-row tm-mt-100 tm-mb-75">
+            <div class="row tm-row tm-mt-100 tm-mb-75  tm-new-badge" style ="font-size:50px;">
                
-                
-            </div>            
+                Comments:
+                 </div>  
+                 <% for(var i=0; i< cmnt.length; i++ ){ %>
+                         <h2 class="tm-pt-30 tm-color-primary tm-post-title"><%= cmnt[i].userid%></h2>
+                         <p class="tm-pt-30">
+                         <%= cmnt[i].comment%>
+                         </p>
+                  <%}%>
+                  <div class="row tm-row tm-mt-100 tm-mb-75  tm-new-badge" style ="font-size:50px;">
+               
+                Enter Your Comment:
+                 </div>  
+                 <form method="post">
+                     <input type="text" name="mycomment" value="" style ="height:70px;width:900px">
+                    
+                        <input class="  tm-new-badge" style ="margin-right:87%"type="submit" name="" value="Comment">
+                      
+                        
+                 </form>
+                     
             <footer class="row tm-row">
                 <hr class="col-12">
                 
