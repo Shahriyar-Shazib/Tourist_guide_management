@@ -19,7 +19,7 @@ router.get('/Comment/:id', (req, res)=>{
     }
     posts.GetPostbyId(pst,function (result){
         comments.Getcmntbypostid(pst,function (results){
-            res.render('Admin/comment.ejs',{userlist:result,cmnt:results})
+            res.render('Admin/comment',{userlist:result,cmnt:results})
         }) 
         
     })
@@ -34,12 +34,26 @@ router.post('/Comment/:id', (req, res)=>{
     comments.insert(pst,function (result){
         posts.GetPostbyId(pst,function (result){
             comments.Getcmntbypostid(pst,function (results){
-                res.render('SCOUT/comment.ejs',{userlist:result,cmnt:results})
+                res.render('Admin/comment.ejs',{userlist:result,cmnt:results})
             }) 
             
         })
         
     })
+})
+
+router.get('/removepost/:id', (req, res)=>{
+    pst={
+        pstid:req.params.id
+    }
+    posts.removebyid(pst,function(status){
+        posts.GetAll(function (result){
+            //console.log(result);
+            res.render('Admin/Home',{userlist:result})
+        })
+    })
+    
+	
 })
 router.get('/', (req, res)=>{
     posts.GetAll(function (result){
