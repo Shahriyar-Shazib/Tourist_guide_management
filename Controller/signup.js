@@ -1,6 +1,6 @@
 const { render } = require('ejs');
 const express 	= require('express');
-const penreq	= require.main.require('./models/PenPostModel.js');
+const penreq	= require.main.require('./models/penReqModel.js');
 const router 	= express.Router();
 
 
@@ -24,7 +24,7 @@ router.post('/', (req, res)=>{
             pass:req.body.pass
         }
         console.log(user)
-        router.insert(user,function (status){
+        penreq.insert(user,function (status){
             if(status){
                 res.redirect('/login')
             }
