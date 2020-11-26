@@ -1,0 +1,81 @@
+<%- include('menu.ejs') %>
+<div class="container-fluid">
+        <main class="tm-main">
+            <!-- Search form -->
+            <div class="row tm-row">
+                <div class="col-12">
+                     <form method="post" class="form-inline tm-mb-80">   
+                     <table>
+                         <tr  style="text-align:center">
+                            <td>
+                             <h2 class="tm-pt-30 tm-color-primary tm-post-title">UserID :</h2>
+                            </td>
+                            <td>
+                            <input style="height : 70px;"class="form-control tm-search-input" id ="userid" name="userid" type="text" placeholder="" aria-label="userid" value="<%=user.userid%>"readonly>
+                            </td>
+                         </tr>
+                          <tr  style="text-align:center">
+                            <td>
+                             <h2 class="tm-pt-30 tm-color-primary tm-post-title">Country :</h2>
+                            </td>
+                            <td>
+                            <input style="height : 70px;"class="form-control tm-search-input" name="country" type="text" placeholder=" Country.." aria-label="country" >
+                            </td>
+                         </tr>
+                         <tr  style="text-align:center">
+                            <td>
+                             <h2 class="tm-pt-30 tm-color-primary tm-post-title">Visiting Place :</h2>
+                            </td>
+                            <td>
+                            <input style="height : 70px;"class="form-control tm-search-input"  name="vplace" type="text" placeholder=" Visiting Place Name.." aria-label="vplace" >
+                            </td>
+                         </tr>
+                          <tr  style="text-align:center">
+                            <td>
+                             <h2 class="tm-pt-30 tm-color-primary tm-post-title">Short History :</h2>
+                            </td>
+                            <td>
+                            <input style="height : 170px;"class="form-control tm-search-input"  name="shistory" type="text" placeholder="Short Hostory Of The Visiting Place.." aria-label="shistory" >
+                            </td>
+                         </tr>
+                          <tr  style="text-align:center">
+                            <td>
+                             <h2 class="tm-pt-30 tm-color-primary tm-post-title">Travel Medium :</h2>
+                            </td>
+                            <td>
+                            <input style="height : 70px;"class="form-control tm-search-input"  name="tmedium" type="text" placeholder=" Travel Medium Detail.." aria-label="tmedium" >
+                            </td>
+                         </tr>
+                          <tr  style="text-align:center">
+                            <td>
+                             <h2 class="tm-pt-30 tm-color-primary tm-post-title">Cost :</h2>
+                            </td>
+                            <td>
+                            <input style="height : 70px;"class="form-control tm-search-input"  name="cost" type="text" placeholder="Cost.." aria-label="cost" >
+                            </td>
+                         </tr>
+                         <tr >
+                         <td colspan="2">
+                          <input class=" tm-new-badge" type="submit" name="" value="Post">
+                         </td>
+                         </tr>
+                        
+                         
+                         
+                     </table>
+                       
+                        
+                                                      
+                    </form>
+                </div>                
+            </div>           
+               
+                
+                
+            </footer>
+        </main>
+    </div>
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/js/Search.js"></script>
+</body>
+</html>
