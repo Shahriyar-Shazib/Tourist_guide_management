@@ -6,7 +6,7 @@ const flush			= require('connect-flash');
 const exSession 	= require('express-session');
 const cookieParser 	= require('cookie-parser');
 
-
+const signup			= require('./controller/signup');
 const login			= require('./controller/login');
 const changepass	= require('./controller/Changepass.js');
 const Admin			= require('./controller/Admin');
@@ -35,6 +35,7 @@ app.use(flash(app));
 app.use(flush());
 
 app.use('/login', login);
+app.use('/Signup', signup);
 app.use('/Changepass', changepass);
 app.use('/Admin', Admin);
 app.use('/logout', logout);
