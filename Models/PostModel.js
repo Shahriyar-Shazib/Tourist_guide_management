@@ -21,7 +21,7 @@ module.exports = {
     },
     GetPostbyId: function(pst, callback){
 		var sql = "select * from post where postid=? ";
-		db.getResults(sql, pst.pstid,function(results){
+		db.getResults(sql,[ pst.pstid],function(results){
 			if(results.length > 0){
 				callback(results,true);
 			}else{
@@ -29,6 +29,7 @@ module.exports = {
 			}
 		});
 	},
+	
 	/*GetPostbyIdArray: function(pst, callback){
 		var sql = "select * from post where postid in ('"+for(var i){}+"' ";
 		db.getResults(sql, pst.pstid,function(results){
@@ -39,5 +40,17 @@ module.exports = {
 			}
 		});*/
   //  },
+  getallpostbyuserid: function(pst, callback){
+	var sql = "select * from post where UserId=? ";
+	console.log(sql,pst)
+	db.getResults(sql, pst,function(results){
+		if(results.length > 0){
+			callback(results,true);
+		}else{
+			callback(results,false);
+		}
+	});
+},
+
 
 }

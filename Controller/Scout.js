@@ -64,11 +64,23 @@ router.get('/removepenpost/:id', (req, res)=>{
     }
     penPost.removebyid(pst,function(status){
         penPost.getpostbyuserID(req.cookies['uname'],function (result){
-            console.log (result)
+            //console.log (result)
            
                 res.render('SCOUT/pendingPost',{userlist:result})
            
         })
+    })
+    
+	
+})
+router.get('/OwnPost', (req, res)=>{
+   
+    posts.getallpostbyuserid(req.cookies['uname'],function(status){
+       
+           
+                res.render('SCOUT/pendingPost',{userlist:status})
+           
+        
     })
     
 	
