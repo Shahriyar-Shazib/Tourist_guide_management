@@ -20,7 +20,9 @@ module.exports = {
 				callback(results,false);
 			}
 		});
-    },
+		
+	},
+	
     
     getbyid: function(user, callback){
         var sql = "select * from `pendingpost` WHERE postid=? ";
@@ -31,6 +33,20 @@ module.exports = {
 				callback(results);
 			}
 		});
+	},
+	getpostbyuserID: function(user, callback){
+        var sql = "select * from `pendingpost` WHERE UserId=? ";
+        //console.log(sql,user)
+		db.getResults(sql, [user],function(results){
+            console.log(results);
+			if(results.length > 0){
+				callback(results);
+			}
+			else {
+				callback (results);
+			}
+		});
     },
+
 
 }

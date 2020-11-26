@@ -2,6 +2,7 @@ const express = require('express');
 const posts = require.main.require('./Models/PostModel.js');
 const comments = require.main.require('./Models/commentModel.js');
 const SCOUT = require.main.require('./Models/SCOUTModel.js');
+const penPost = require.main.require('./Models/PenPostModel.js');
 //const userModel = require.main.require('./models/userModel.js');
 const router = express.Router();
 
@@ -43,6 +44,17 @@ router.get('/profile', (req, res)=>{
     SCOUT.getbyID(req.cookies['uname'],function (result){
         //console.log (result)
         res.render('SCOUT/profile',{userlist:result})
+    })
+	
+})
+
+
+router.get('/PendingPost', (req, res)=>{
+    penPost.getpostbyuserID(req.cookies['uname'],function (result){
+        console.log (result)
+       
+            res.render('SCOUT/pendingPost',{userlist:result})
+       
     })
 	
 })
