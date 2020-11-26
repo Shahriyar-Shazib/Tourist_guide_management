@@ -1,0 +1,100 @@
+   <!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Tour Guid</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.js"
+      integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+     crossorigin="anonymous">
+    </script>
+    <link rel="stylesheet" href="css\style.css">
+ 
+      <script src="/assets/js/search.js"></script>
+      <script src="/assets/js/jquery-2.1.4.min.js"></script>
+	<link rel="stylesheet" href="/assets/fontawesome/css/all.min.css"> <!-- https://fontawesome.com/ -->
+	<link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet"> <!-- https://fonts.google.com/ -->
+    <link href="/assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/css/templatemo-xtra-blog.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
+<!--
+    
+TemplateMo 553 Xtra Blog
+
+https://templatemo.com/tm-553-xtra-blog
+
+-->
+   
+
+    <section class ="top-bar">
+     
+      <div class="coverage">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+          <a class="navbar-brand" href="/"><i class="fas fa-truck-pickup ">Tour Guid</i></a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">    
+              <li class="nav-item">
+                <a class="nav-link" href="/login" tabindex="-1" aria-disabled="true">Login/Signup</a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+</head>
+<body>
+    <div class="container-fluid">
+        <main class="">
+            <!-- Search form -->
+           
+            <div class="row tm-row">
+                                
+            </div>            
+            <div class="row tm-row">
+                <% for(var i=0; i< userlist.length; i++ ){ %>
+                    <article class="col-12 col-md-12 tm-post">
+                        <hr class="tm-hr-primary">
+                        <a href="post.html" class="effect-lily tm-post-link tm-pt-60">
+                            <div class="tm-post-link-inner">
+                                                           
+                            </div>
+                            <span class="position-absolute tm-new-badge">New</span>
+                            <h2 class="tm-pt-30 tm-color-primary tm-post-title"><%= userlist[i].UserId%></h2>
+                        </a>                    
+                        <p class="tm-pt-30">
+                        Country:
+                             <%= userlist[i].country%>
+                             <hr>
+                            <%= userlist[i].short_history%>
+                            <hr>
+                            <%= userlist[i].visiting_Place%><br>
+                            travel medium:
+                            <%= userlist[i]. travel_medium%><br>
+                            <span>
+                            travel medium:
+                            <%= userlist[i].cost%>
+                            </span>
+                        </p>
+                        <div class="d-flex justify-content-between tm-pt-45">
+                           
+                        </div> 
+                    </article>
+                    <%}%>
+                             
+            </div>            
+            <footer class="row tm-row">
+                <hr class="col-12">
+                
+                
+            </footer>
+        </main>
+    </div>
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/js/templatemo-script.js"></script>
+</body>
+</html>
