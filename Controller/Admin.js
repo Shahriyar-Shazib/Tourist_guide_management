@@ -6,12 +6,41 @@ const Admin = require.main.require('./Models/AdminModel.js');
 const pensignup = require.main.require('./Models/penReqModel.js');
 const penpost = require.main.require('./Models/PenPostModel.js');
 const user = require.main.require('./Models/userModel.js');
+const comments = require.main.require('./Models/commentModel.js');
 const posts = require.main.require('./Models/PostModel.js');
 const router = express.Router();
 
 
 
 
+router.get('/Comment/:id', (req, res)=>{
+    pst={
+        pstid:req.params.id
+    }
+    posts.GetPostbyId(pst,function (result){
+        comments.Getcmntbypostid(pst,function (results){
+            res.render('Admin/comment.ejs',{userlist:result,cmnt:results})
+        }) 
+        
+    })
+})
+router.post('/Comment/:id', (req, res)=>{
+    pst={
+        pstid:req.params.id,
+        userid:req.cookies['uname'],
+        commenttext:req.body.mycomment
+    }
+    
+    comments.insert(pst,function (result){
+        posts.GetPostbyId(pst,function (result){
+            comments.Getcmntbypostid(pst,function (results){
+                res.render('SCOUT/comment.ejs',{userlist:result,cmnt:results})
+            }) 
+            
+        })
+        
+    })
+})
 router.get('/', (req, res)=>{
     posts.GetAll(function (result){
         //console.log(result);
