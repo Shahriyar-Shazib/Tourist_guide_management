@@ -30,6 +30,16 @@ module.exports = {
 				callback(results);
 			}
 		});
+	},
+	insert: function(user, callback){
+        var sql = "INSERT INTO `signup_req`(`id`, `userid`, `name`, `address`, `email`, `number`, `gender`, `dob`, `password`) VALUES (?,?,?,?,?,?,?,?,?) ";
+        console.log(sql,user.userid)
+		db.execute(sql, ['', user.userid, user.name , user.add, user.email, user.phone,user.gen,user.dob,user.pass,],function(results){
+           // console.log(result);
+			
+				callback(results);
+			
+		});
     },
 
 }
