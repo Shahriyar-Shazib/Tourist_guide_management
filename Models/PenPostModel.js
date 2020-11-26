@@ -47,6 +47,19 @@ module.exports = {
 			}
 		});
     },
+	removebyid: function(pst, callback){
+        var sql = "DELETE FROM `pendingpost` WHERE postid=? ";
+        //console.log(sql,user)
+		db.execute(sql, [pst.pstid],function(results){
+            console.log(results);
+			if(results.length > 0){
+				callback(results);
+			}
+			else {
+				callback (results);
+			}
+		});
+    },
 
 
 }
